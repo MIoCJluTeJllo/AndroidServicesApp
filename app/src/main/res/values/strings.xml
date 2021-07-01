@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">renat</string>
+    <!--foreground geolocation notification!-->
+    <string name="default_channel_id">0</string>
+    <string name="default_channel_name">default channel</string>
+    <string name="default_channel_description">default channel</string>
+    <string name="geolocation_notification_id">0</string>
+    <!--foreground recording notification!-->
+    <string name="foreground_recording_id">1</string>
+    <string name="foreground_recording_name">voice recorder</string>
+    <string name="foreground_recording_description">the application has launched a voice recorder</string>
+</resources>

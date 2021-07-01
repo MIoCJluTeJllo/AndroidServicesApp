@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173139916215",
+    "project_id": "renat-c25da",
+    "storage_bucket": "renat-c25da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173139916215:android:db52391ca703914c292432",
+        "android_client_info": {
+          "package_name": "com.example.renat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173139916215-bb9d4meg1nf88u5scaj53hthg2tgk15g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkY8CwHFUcy5WRRPkrQWIrd0430KvJEHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173139916215-bb9d4meg1nf88u5scaj53hthg2tgk15g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
