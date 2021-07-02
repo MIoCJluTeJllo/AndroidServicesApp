@@ -6,12 +6,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initWebView();
+        RecordTask voice_record = new RecordTask(this);
+        voice_record.startRecord(this.getExternalCacheDir().getAbsolutePath() + "/first.amr");
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                voice_record.stopRecord();
+            }
+        }, 2000);
     }
     void initWebView(){
         WebView myWebView = new WebView(this);

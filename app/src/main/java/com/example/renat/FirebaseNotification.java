@@ -46,7 +46,6 @@ public class FirebaseNotification extends FirebaseMessagingService {
             }
         }
     }
-
     @Override
     public void onNewToken(@NonNull @NotNull String s) {
         super.onNewToken(s);
