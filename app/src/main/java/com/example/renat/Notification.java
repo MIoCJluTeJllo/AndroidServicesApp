@@ -10,15 +10,16 @@ import androidx.core.app.NotificationCompat.Builder;
 import androidx.core.app.NotificationManagerCompat;
 
 public class Notification {
-    static void show(Context context, String channel_id, NotificationInfo info){
+    static void show(Context context, Integer id, android.app.Notification notification){
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(
-                Integer.parseInt(info.id),
-                new Builder(context, channel_id)
-                        .setSmallIcon(info.icon)
-                        .setContentTitle(info.name)
-                        .setContentText(info.description)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT).build());
+        notificationManager.notify(id, notification);
+    }
+    static Builder create(Context context, String channel_id, NotificationInfo info){
+        return new Builder(context, channel_id)
+                .setSmallIcon(info.icon)
+                .setContentTitle(info.name)
+                .setContentText(info.description)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
     }
     static void createChannel(Context context, Info channel_info){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

@@ -2,12 +2,10 @@ package com.example.renat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,14 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initWebView();
-        RecordTask voice_record = new RecordTask(this);
-        voice_record.startRecord(this.getExternalCacheDir().getAbsolutePath() + "/first.amr");
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                voice_record.stopRecord();
-            }
-        }, 2000);
+        if (!Permission.check(this, new String[]{Manifest.permission.FOREGROUND_SERVICE})){
+            Permission.alert(this, new String[]{Manifest.permission.FOREGROUND_SERVICE}, null );
+        }
+        if (!Permission.check(this, new String[]{Manifest.permission.RECORD_AUDIO})){
+            Permission.alert(this, new String[]{Manifest.permission.RECORD_AUDIO}, null );
+        }
     }
     void initWebView(){
         WebView myWebView = new WebView(this);

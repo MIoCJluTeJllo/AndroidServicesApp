@@ -1,17 +1,16 @@
 package com.example.renat;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.util.Log;
-
+import androidx.core.app.NotificationCompat.Builder;
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Map;
 
 public class FirebaseNotification extends FirebaseMessagingService {
@@ -34,15 +33,32 @@ public class FirebaseNotification extends FirebaseMessagingService {
             String title = data.get("title");
             String body = data.get("body");
             if (title != null && body != null){
-                Notification.show(
-                        getApplicationContext(),
-                        getString(R.string.default_channel_id) ,
+                Builder notification = Notification.create(
+                        this,
+                        getString(R.string.default_channel_id),
                         new Notification.NotificationInfo(
-                            getString(R.string.geolocation_notification_id),
+                            getString(R.string.recording_notification_id),
                             title,
                             body,
                             R.drawable.ic_fast
-                    ));
+                        )
+                );
+                if (title.equals("Record start")){
+                    Intent notificationIntent = new Intent(this, VoiceRecordnigService.class);
+                    PendingIntent pendingIntent =
+                    PendingIntent.getService(this, 0, notificationIntent, 0);
+                    notification.setContentIntent(pendingIntent);
+                    notification.setAutoCancel(true);
+                    startForeground(
+                            Integer.parseInt(getString(R.string.recording_notification_id)),
+                            notification.build());
+                }
+                else {
+                    Notification.show(
+                            getApplicationContext(),
+                            Integer.valueOf(getString(R.string.recording_notification_id)),
+                            notification.build());
+                }
             }
         }
     }

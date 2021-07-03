@@ -39,7 +39,7 @@ public class RecordTask {
             recorder.stop();
             recorder.release();
             recorder = null;
-            Log.i(TAG, "Rsecording stopped");
+            Log.i(TAG, "Recording stopped");
         }
     }
     boolean createFile(String path) {
